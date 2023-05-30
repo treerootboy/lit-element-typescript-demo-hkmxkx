@@ -2,12 +2,14 @@ import { LitElement, html, css, customElement, property } from 'lit-element';
 
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
-  static styles = css`p { color: blue }`;
+  createRenderRoot() {
+    return this; // turn off shadow dom to access external styles
+  }
 
   @property()
   name = 'Somebody';
 
   render() {
-    return html`<button>Hello, ${this.name}!</button>`;
+    return html`<button class="btn btn-primary">Hello, ${this.name}!</button>`;
   }
 }

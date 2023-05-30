@@ -1,6 +1,6 @@
-import { LitElement, html, css, customElement, property } from "lit-element";
+import { LitElement, html, css, customElement, property } from 'lit-element';
 
-@customElement("my-element")
+@customElement('my-element')
 export class MyElement extends LitElement {
   static get styles() {
     return css`
@@ -11,7 +11,11 @@ export class MyElement extends LitElement {
   }
 
   @property({ type: String })
-  mood = "";
+  mood = '';
+
+  createRenderRoot() {
+    return this; // turn off shadow dom to access external styles
+  }
 
   render() {
     return html`
